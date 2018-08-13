@@ -3,6 +3,7 @@
 - Angular
 
 1. [Angular Rotas](https://github.com/fulviocanducci/_help/blob/master/angularrota.pdf)
+2. [Angular Cli](https://cli.angular.io/)
 
 - React
 
