@@ -21,3 +21,7 @@ npm install -g create-react-app
 * WebApi
 
 1. [Exemplos de dados WebApi](https://jsonplaceholder.typicode.com/)
+
+* SQLServer
+
+1. [Abreviar nomes](https://github.com/fulviocanducci/_help/blob/master/Abreviar_nomes_sqlserver.txt)
