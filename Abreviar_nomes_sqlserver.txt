@@ -1,0 +1,29 @@
+ALTER FUNCTION dbo.Fn_Abbreviate(@value VARCHAR(MAX)) RETURNS VARCHAR(MAX)
+AS BEGIN
+    DECLARE @firstName VARCHAR(50);
+	DECLARE @middleName VARCHAR(MAX);
+	DECLARE @aux VARCHAR(50);
+	DECLARE @fullName VARCHAR(50);
+	SET @firstName = LEFT(@value, CHARINDEX(' ', @value));
+	SET @middleName = '';
+	SET @aux = LTRIM(REPLACE(@value, @firstName,''));	
+	
+	SET @aux = LTRIM(REPLACE(@aux, 'da ',' '));	
+	SET @aux = LTRIM(REPLACE(@aux, 'das ',' '));
+	SET @aux = LTRIM(REPLACE(@aux, 'de ',' '));		
+	SET @aux = LTRIM(REPLACE(@aux, 'do ',' '));	
+	SET @aux = LTRIM(REPLACE(@aux, 'dos ',' '));	
+
+	WHILE (LEN(@aux) > 0)
+	BEGIN
+		SET @aux = LTRIM(@aux);		
+		SET @middleName = @middleName + SUBSTRING(@aux, 1,1) + '. ';
+		IF (CHARINDEX(' ', @aux) > 0)
+			SET @aux = REPLACE(@aux, LEFT(@aux, CHARINDEX(' ', @aux)), '');		
+		ELSE
+			SET @aux = '';
+	END
+	SET @fullName = @firstName + @middleName;
+	RETURN ( @fullName ); 
+END
+GO
